@@ -82,3 +82,36 @@ images.forEach((img, index) => {
 // Inizializza il carosello
 updateCarousel();
 
+// Variabile per l'autoplay
+let autoplay = null;
+
+// Funzione per avviare l'autoplay
+function startAutoplay() {
+  autoplay = setInterval(nextImage, 3000);
+}
+
+// Funzione per fermare l'autoplay
+function stopAutoplay() {
+  clearInterval(autoplay);
+  autoplay = null;
+}
+
+// Seleziona i bottoni
+const startButton = document.querySelector('.start');
+const stopButton = document.querySelector('.stop');
+const reverseButton = document.querySelector('.reverse');
+
+// Aggiunge gli event listener ai bottoni
+startButton.addEventListener('click', startAutoplay);
+stopButton.addEventListener('click', stopAutoplay);
+reverseButton.addEventListener('click', () => {
+  // Inverte la direzione dell'autoplay
+  const wasPlaying = autoplay;
+  if (wasPlaying) {
+    stopAutoplay();
+  }
+  [nextImage, previousImage] = [previousImage, nextImage];
+  if (wasPlaying) {
+    startAutoplay();
+  }
+});
