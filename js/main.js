@@ -79,9 +79,6 @@ images.forEach((img, index) => {
   thumbnails.appendChild(thumbnail);
 });
 
-// Inizializza il carosello
-updateCarousel();
-
 // Variabile per l'autoplay
 let autoplay = null;
 
@@ -115,3 +112,6 @@ reverseButton.addEventListener('click', () => {
     startAutoplay();
   }
 });
+
+// Inizializza il carosello
+updateCarousel();
